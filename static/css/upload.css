@@ -1,0 +1,159 @@
+/* upload.css  — дополняет style.css */
+
+.subtitle {
+    margin-top: 8px;
+    color: #555;
+}
+
+/* ------- центрируем колонку ------- */
+.upload-wrapper {
+    position: relative;
+    max-width: 480px;
+    margin: 80px auto 0;
+    text-align: center;
+}
+
+/* общая подпись */
+.subtitle { color: #555; }
+
+/* -------- drop-zone -------- */
+.dropzone {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    border: 2px dashed var(--border);
+    border-radius: 12px;
+    background: #fafbff;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    overflow: hidden;
+}
+.dropzone.hover {
+    background: #f0f4ff;
+    border-color: var(--accent);
+}
+
+.icon       { font-size: 56px; }
+.primary    { margin: 0; font-weight: 600; font-size: 18px; }
+.secondary  { margin: 0; font-size: 0.9rem; color: #777; }
+
+.preview {
+    margin-top: 10px;
+}
+.preview img {
+    max-height: 120px;
+    max-width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+/* -------- Кнопка Browse -------- */
+.btn.wide {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+}
+
+/* -------- Current Upload -------- */
+.current-upload {
+    margin-top: 40px;
+    text-align: left;
+}
+.url-box {
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+.url-box input {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 8px 100px 8px 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #f9f9f9;
+    font-size: 1rem;
+}
+.url-box button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    padding: 0 16px;
+    cursor: pointer;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+}
+.no-file {
+    color: #888;
+    font-size: 0.95rem;
+    font-style: italic;
+}
+/* Затемнённый полупрозрачный оверлей */
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+/* Стиль спиннера */
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid var(--accent);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.toast {
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    background: #e6f7e6;
+    border: 1px solid #b0ddb0;
+    color: #2e7d32;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    z-index: 1100;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.toast.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0)
+}
+
+.toast.hidden {
+    display: none;
+}

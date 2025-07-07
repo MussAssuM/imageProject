@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% set title   = "Saved Images" %}
+{% set heading = "Saved Images" %}
+{% set active_tab = "images" %}
+
+{% block extra_css%}
+<link rel="stylesheet" href="/static/css/images.css">
+{% endblock %}
+
+{% block extra_js %}
+  <script src="/static/js/images.js" defer></script>
+{% endblock %}
+
+{% block content %}
+<form id="multiDeleteForm">
+    <div class="table-container">
+        <table class="images-table">
+            <thead>
+                <tr>
+                    <th class="selector-col"><input id="selectAll" type="checkbox" title="Выбрать всё"></th>
+                    <th class="preview-col">Превью</th>
+                    <th class="name-col">Имя файла</th>
+                    <th class="date-col">Дата загрузки</th>
+                    <th>URL</th>
+                    <th>Скачать</th>
+                    <th style="width:80px;">Удалить</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% if image_files %}
+                {% for img in image_files %}
+                <tr>
+                    <!-- Чекбокс -->
+                    <td class="selector-col">
+                        <input class="row-checkbox"
+                               type="checkbox"
+                               name="selected_file"
+                               value="{{ img.name }}">
+                    </td>
+                    <!-- Столбец с мини-превью -->
+                    <td class="preview-col">
+                        <img src="/images/{{ img.name }}"
+                             alt="{{ img.name }}"
+                             class="preview-img">
+                    </td>
+                    <!-- Имя файла с иконкой -->
+                    <td class="name-col">
+                        <span class="file-icon">🖼️</span> {{ img.name }}
+                    </td>
+                    <!-- Дата загрузки -->
+                    <td class="uploaded-at"
+                        data-utc="{{ img.uploaded_at }}">
+                    </td>
+                    <!-- URL -->
+                    <td class="url">
+                        <a href="/images/{{ img.name }}" target="_blank">
+                            {{ request.base_url }}images/{{ img.name }}
+                        </a>
+                    </td>
+                    <td style="text-align:center;">
+                        <button type="button"
+                                class="dl-btn icon-btn"
+                                data-name="{{ img.name }}"
+                                title="Скачать">⬇️
+                        </button>
+
+                    </td>
+                    <!-- Удаление -->
+                    <td style="text-align:center;">
+                            <button type="button"
+                                    class="del-btn"
+                                    data-name="{{ img.name }}"
+                                    title="Удалить">🗑️
+                            </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr><td colspan="7" class="empty">Нет файлов</td></tr>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="multi-delete-controls">
+        <button id="downloadSelectedBtn"
+                type="button"
+                class="btn download-selected" disabled>
+            Скачать выбранные
+    </button>
+        <button id="deleteSelectedBtn"
+                type="submit"
+                class="btn delete-selected" disabled>
+            Удалить выбранные
+        </button>
+    </div>
+
+</form>
+{% endblock %}

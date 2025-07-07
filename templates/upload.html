@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% set title   = "Upload image" %}
+{% set heading = "Upload Photos" %}
+{% set active_tab = "upload" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/upload.css">
+{% endblock %}
+
+{% block extra_js %}
+  <script src="/static/js/upload.js" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class="upload-wrapper">
+    <div id="successToast"
+         class="toast{% if message %} hidden{% endif %}">
+        {{ message or "Файл успешно загружен!" }}
+    </div>
+
+  <section class="subtitle">
+      Сюда Вы можете загрузить картинки, фото мемы или другие забавные изображения.
+  </section>
+
+  <form id="uploadForm"
+        action="/upload/"
+        method="post"
+        enctype="multipart/form-data"
+        novalidate>
+
+
+      <input id="fileInput"
+             type="file"
+             name="file"
+             accept=".jpg,.jpeg,.png,.gif"
+             required hidden>
+
+      <!-- drop-zone -->
+      <label for="fileInput" class="dropzone" id="dropzone">
+          <div class="icon">☁️⬆️</div>
+          <p class="primary" id="dropzonePrimary">Select a file or drag &amp; drop here</p>
+          <p class="secondary">Only .jpg, .png &amp; .gif • Max 5 MB</p>
+          <!-- Сообщение по умолчанию внутри drop-зоны -->
+          <p id="dropzoneMessage" class="no-file">Загружаемый файл не выбран</p>
+          <div id="previewBox" class="preview"></div>
+      </label>
+
+      <button type="submit" class="btn wide">Загрузить файл</button>
+  </form>
+
+<section class="current-upload">
+  <h2>Current Upload</h2>
+  <div class="url-box">
+    <input id="fileUrl"
+           type="text"
+           readonly
+           value="{{ current_upload_url or 'https://' }}">
+    <button id="copyBtn" class="btn small">COPY</button>
+  </div>
+</section>
+
+    <div id="loadingOverlay" style="display:none;">
+    <div class="spinner"></div>
+</div>
+</div>
+{% endblock %}

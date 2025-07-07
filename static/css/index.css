@@ -1,0 +1,79 @@
+:root {
+  --header-height: 83.2px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(100vh - var(--header-height));
+  margin: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.welcome-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  overflow: hidden;
+}
+
+.welcome-text h2 {
+  margin: 0 0 16px;
+  font-size: 32px;
+  color: var(--accent);
+}
+
+.welcome-text p {
+  margin: 0 0 24px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.welcome-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.welcome-buttons .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  background: var(--accent);
+  color: #fff;
+}
+
+.welcome-buttons .btn.outline {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.welcome-image {
+  flex: 1;
+  overflow: hidden;
+}
+
+.welcome-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}

@@ -1,0 +1,37 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title or "Image Server" }}</title>
+
+    <!-- Общий стиль -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    {% block extra_css %}{% endblock %}
+
+
+    <!-- Общий скрипт -->
+    <script src="/static/js/main.js" defer></script>
+    {% block extra_js %}{% endblock %}
+</head>
+<body>
+<header>
+    <h1>{{ heading }}</h1>
+
+    <nav>
+        <a href="/upload/"
+           class="tab {% if active_tab|default('') == 'upload' %}active{% endif %}">
+            Upload
+        </a>
+        <a href="/images/"
+           class="tab {% if active_tab|default('') == 'images' %}active{% endif %}">
+            Images
+        </a>
+    </nav>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

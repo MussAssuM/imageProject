@@ -1,0 +1,87 @@
+:root {
+    --accent: #1677ff;
+    --bg: #f5f7fa;
+    --border: #d0d7e2;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font: 16px/1.4 system-ui, sans-serif;
+    background: var(--bg);
+}
+
+header {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 20px;
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    justify-content: center;
+}
+
+.tab {
+    padding: 4px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #333;
+}
+
+.active {
+    background: var(--accent);
+    color: #fff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin-top: 24px;
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 8px 10px;
+    text-align: left;
+}
+
+th {
+    background: #f0f2f5;
+}
+
+tbody tr:hover {
+    background: #f9fbff;
+}
+
+.url {
+    max-width: 420px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.del-btn { background: none;
+    border: 0; cursor: pointer;
+    color: #c62828;
+    font-size: 20px;
+}
+
+main {
+  height: calc(100vh - var(--header-height));
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}

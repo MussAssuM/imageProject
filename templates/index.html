@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% set title   = "Home" %}
+{% set heading = "Сервер картинок" %}
+{% set active_tab = "" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="/static/css/index.css">
+{% endblock %}
+
+{% block content %}
+<div class="welcome">
+    <div class="welcome-text">
+        <h2>Добро пожаловать на Сервер Картинок!</h2>
+        <p>Загружайте селфи, мемы или любые яркие снимки - всё, что хочется сохранить и поделиться</p>
+        <div class="welcome-buttons">
+            <a href="/upload/" class="btn">Загрузить изображение</a>
+            <a href="/images/" class="btn outline">Мои изображения</a>
+        </div>
+    </div>
+    <div class="welcome-image">
+        <img src="/static/img/index.jpg" alt="welcome illustration">
+    </div>
+</div>
+{% endblock %}

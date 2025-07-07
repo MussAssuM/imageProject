@@ -1,0 +1,18 @@
+# Python build artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Логи и данные
+logs/
+images/
+
+# Виртуальные окружения
+.env
+.venv
+env/
+venv/
+
+# IDE и прочее
+.idea/
+*.iml

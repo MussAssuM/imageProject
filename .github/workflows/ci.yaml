@@ -68,13 +68,21 @@ jobs:
       - name: Start services for healthcheck
         run: docker compose up -d
 
+      # ----- Проверяем запускается ли контейнер -----
+      - name: List running containers
+        run: docker ps
+
+      # ----- Вывод логов для отладки -----
+      - name: Show app logs
+        run: docker compose logs app
+
       # ----- Ожидание готовности приложения -----
       - name: Wait for app to be healthy
         run: sleep 5
 
       # ----- Проверка healthcheck-эндпоинта -----
       - name: Healthcheck endpoint
-        run: curl --fail http://app:8000/health
+        run: curl --fail http://localhost:8000/health
 
       # ----- Деплой на production-сервер -----
       - name: Deploy to server

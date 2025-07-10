@@ -57,6 +57,10 @@ app = FastAPI(
     swagger_ui_parameters={"defaultModelsExpandDepth": -1}
 )
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 # Статика для CSS/JS картинок
 app.mount("/static", StaticFiles(directory="static"), name="static")
 # ─── Подключаем роутеры ────────────────────────────────────────────────────

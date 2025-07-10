@@ -44,6 +44,7 @@ jobs:
       # ----- Запуск тестов внутри Docker-контейнера -----
       - name: Run tests inside container
         run: docker compose run --rm app pytest -q
+        
 
 
   build-and-deploy:
@@ -73,7 +74,7 @@ jobs:
 
       # ----- Проверка healthcheck-эндпоинта -----
       - name: Healthcheck endpoint
-        run: curl --fail http://localhost:8000/health
+        run: curl --fail http://app:8000/health
 
       # ----- Деплой на production-сервер -----
       - name: Deploy to server

@@ -39,11 +39,11 @@ jobs:
 
       # ----- Сборка Docker-образа приложения -----
       - name: Build Docker app image
-        run: docker-compose build app
+        run: docker compose build app
 
       # ----- Запуск тестов внутри Docker-контейнера -----
       - name: Run tests inside container
-        run: docker-compose run --rm app pytest -q
+        run: docker compose run --rm app pytest -q
 
 
   build-and-deploy:
@@ -65,7 +65,7 @@ jobs:
 
       # ----- Запуск сервисов для healthcheck -----
       - name: Start services for healthcheck
-        run: docker-compose up -d
+        run: docker compose up -d
 
       # ----- Ожидание готовности приложения -----
       - name: Wait for app to be healthy

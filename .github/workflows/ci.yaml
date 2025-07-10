@@ -84,6 +84,18 @@ jobs:
       - name: Healthcheck endpoint
         run: curl --fail http://localhost:8000/health
 
+      # ----- Запускаем ssh-агент и подгружаем ключ -----
+      - name: Setup SSH key
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      # ----- Деплой по SSH на реальный хост -----
+      - name: Deploy to server
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            'cd ~/project && docker compose pull && docker compose up -d'
+
       # ----- Деплой на production-сервер -----
       - name: Deploy to server
         run: ssh user@yourserver 'cd ~/project && docker compose pull && docker compose up -d'
